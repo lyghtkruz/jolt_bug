@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtbb5xedtrvy6"]
+
+[ext_resource type="Script" path="res://node_3d.gd" id="1_x3seg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_un1kg"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lceil"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0h7x"]
+size = Vector3(4, 1, 4)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_x3seg")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_un1kg")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_lceil")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00478, 0)
+shape = SubResource("BoxShape3D_m0h7x")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.968994, 0.247084, 0, -0.247084, 0.968994, 0, 1.1076, 3.35179)
